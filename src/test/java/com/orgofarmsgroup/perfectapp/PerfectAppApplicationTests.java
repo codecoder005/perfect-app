@@ -12,7 +12,7 @@ class PerfectAppApplicationTests {
 
 	@Test
 	void contextLoads() {
-		LOGGER.info("test succeeded");
+		LOGGER.info("test succeeded. triggering sonarcloud.");
 	}
 
 }
