@@ -29,7 +29,8 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.OK).body(responseDto);
         }catch (Exception ex) {
             log.error("UserController.getUsers().Exception {}", ex.getMessage());
-            return ResponseEntity.badRequest().body(new ResponseDto(request, HttpStatus.BAD_REQUEST, "Something went wrong."));
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                    .body(new ResponseDto(request, HttpStatus.SERVICE_UNAVAILABLE, "Something went wrong."));
         }
     }
 }

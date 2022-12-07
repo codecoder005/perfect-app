@@ -37,7 +37,7 @@ class UserControllerTest {
 
     @Test
     @DisplayName(value = "test users root api")
-    void testUsersRootAPI() throws Exception {
+    void testUsersRootAPI200() throws Exception {
         List<UserEntity> mockedUsersFromService = new ArrayList<>();
         mockedUsersFromService.add(new UserEntity(101L, "John", "john@email.com"));
         when(userService.getUsers()).thenReturn(mockedUsersFromService);
@@ -52,5 +52,16 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.data[0].email").value("john@email.com"))
                 .andExpect(jsonPath("$.requestObject.requestURL").value("http://localhost/users"))
                 .andExpect(jsonPath("$.requestObject.requestMethod").value("GET"));
+    }
+
+    @Test
+    @DisplayName(value = "root API Service Unavailable")
+    void testUsersRootAPIServiceUnavailable() throws Exception {
+        when(userService.getUsers()).thenThrow(new RuntimeException("Intentionally thrown to check service unavailability"));
+        mockMvc.perform(get(AppConstants.API_URI.USERS_APIS.USERS_ROOT))
+                .andDo(print())
+                .andExpect(status().is5xxServerError())
+                .andExpect(jsonPath("$.statusCode").value("503"))
+                .andExpect(jsonPath("$.data").value("Something went wrong."));
     }
 }
