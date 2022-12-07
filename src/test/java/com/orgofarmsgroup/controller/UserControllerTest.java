@@ -3,6 +3,7 @@ package com.orgofarmsgroup.controller;
 import com.orgofarmsgroup.entity.UserEntity;
 import com.orgofarmsgroup.service.UserService;
 import com.orgofarmsgroup.util.AppConstants;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ class UserControllerTest {
     private UserService userService;
 
     @Test
+    @DisplayName(value = "test users root api")
     void testUsersRootAPI() throws Exception {
         List<UserEntity> mockedUsersFromService = new ArrayList<>();
         mockedUsersFromService.add(new UserEntity(101L, "John", "john@email.com"));
