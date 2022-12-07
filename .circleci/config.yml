@@ -1,0 +1,47 @@
+version: 2.1
+
+# Orbs
+
+workflows:
+  build-deploy:
+    jobs:
+      - build-and-test:
+          context: SonarCloud
+      - deploy:
+          name: Dev Central India
+          requires:
+            - build-and-test
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/openjdk:17.0.5
+    working_directory: ~/repo
+    steps:
+      # Checkout the code as the first step.
+      - checkout
+      # Use mvn clean and package as the standard maven build phase
+      - run:
+          name: Build
+          command: mvn -B -DskipTests clean package
+      # Then run your tests!
+      - run:
+          name: Test
+          command: mvn test
+      - run:
+          name: Analyze on SonarCloud
+          command: mvn verify sonar:sonar -Dsonar.projectKey=codecoder005_perfect-app
+      - run:
+          name: Install
+          command: mvn install
+  deploy:
+    parameters:
+      environment-type:
+        type: string
+        default: development
+    docker:
+      - image: cimg/openjdk:17.0.5
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: echo "deployment step executed."
