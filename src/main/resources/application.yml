@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: perfect-app
+  profiles:
+    active: ${RUNNING_ENVIRONMENT:dev}, h2
+

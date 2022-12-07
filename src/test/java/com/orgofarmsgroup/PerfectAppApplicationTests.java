@@ -1,4 +1,4 @@
-package com.orgofarmsgroup.perfectapp;
+package com.orgofarmsgroup;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
