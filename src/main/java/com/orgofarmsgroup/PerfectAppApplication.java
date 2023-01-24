@@ -16,7 +16,7 @@ public class PerfectAppApplication {
 
 	@Bean
 	ApplicationRunner applicationRunner(UserRepository userRepository) {
-		return (args) -> {
+		return args -> {
 			UserEntity user = new UserEntity(101L, "John", "john@email.com");
 			userRepository.save(user);
 		};
