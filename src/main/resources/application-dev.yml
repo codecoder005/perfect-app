@@ -1,0 +1,20 @@
+logging:
+  file:
+    name: C:/Users/rjanapureddy/Downloads/version-control/orgofarmsgroup/perfect-app/logs/dev/application-dev.log
+    max-file-size: 100KB
+
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-alias: spring-https
+    key-store: classpath:spring-https.p12
+    key-store-type: PKCS12
+    key-password: password
+    key-store-password: password
+
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
