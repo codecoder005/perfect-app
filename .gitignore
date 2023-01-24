@@ -60,3 +60,5 @@ hs_err_pid*
 # bat files
 *.bat
 
+# exe files
+*.exe
