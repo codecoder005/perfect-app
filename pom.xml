@@ -19,6 +19,7 @@
 		<java.version>17</java.version>
 		<sonar.organization>codecoder005</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.coverage.exclusions>com.orgofarmsgroup/dto/**</sonar.coverage.exclusions>
 	</properties>
 
 	<dependencies>
