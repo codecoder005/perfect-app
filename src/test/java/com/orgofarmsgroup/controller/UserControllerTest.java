@@ -42,7 +42,7 @@ class UserControllerTest {
         mockedUsersFromService.add(new UserEntity(101L, "John", "john@email.com"));
         when(userService.getUsers()).thenReturn(mockedUsersFromService);
 
-        mockMvc.perform(get(AppConstants.API_URI.USERS_APIS.USERS_ROOT))
+        mockMvc.perform(get(AppConstants.ApiURI.UsersAPI.USERS_ROOT))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.statusCode").value("200"))
@@ -58,7 +58,7 @@ class UserControllerTest {
     @DisplayName(value = "root API Service Unavailable")
     void testUsersRootAPIServiceUnavailable() throws Exception {
         when(userService.getUsers()).thenThrow(new RuntimeException("Intentionally thrown to check service unavailability"));
-        mockMvc.perform(get(AppConstants.API_URI.USERS_APIS.USERS_ROOT))
+        mockMvc.perform(get(AppConstants.ApiURI.UsersAPI.USERS_ROOT))
                 .andDo(print())
                 .andExpect(status().is5xxServerError())
                 .andExpect(jsonPath("$.statusCode").value("503"))

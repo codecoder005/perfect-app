@@ -2,7 +2,9 @@ package com.orgofarmsgroup.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.servlet.http.HttpServletRequest;
+
+import javax.persistence.Transient;
+import javax.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +29,7 @@ public class ResponseDto implements Serializable {
     private static final long serialVersionUID = -1225492362858997441L;
 
     @JsonIgnore
+    @Transient
     private HttpServletRequest request;
 
     private Timestamp timestamp = new Timestamp(System.currentTimeMillis());

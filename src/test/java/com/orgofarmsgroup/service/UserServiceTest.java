@@ -32,6 +32,6 @@ class UserServiceTest {
         when(userRepository.findAll()).thenReturn(mockedUsers);
 
         List<UserEntity> serviceResponse = userService.getUsers();
-        assertEquals(serviceResponse.size(), 1);
+        assertEquals(1, serviceResponse.size());
     }
 }

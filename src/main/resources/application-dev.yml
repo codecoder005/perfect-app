@@ -1,6 +1,6 @@
 logging:
   file:
-    name: ./logs/dev/application-dev.log
+    name: C:/Users/rjanapureddy/Downloads/version-control/orgofarmsgroup/perfect-app/logs/dev/application-dev.log
     max-file-size: 100KB
 
 server:
